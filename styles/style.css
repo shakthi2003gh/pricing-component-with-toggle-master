@@ -1,4 +1,5 @@
 @import url(/styles/normalize.css);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 
 *,
 *::after,
@@ -9,4 +10,213 @@
 html {
   font-size: 62.5%;
   min-width: 375px;
+}
+
+/* >Color palette */
+:root {
+  --text-primary: hsl(232, 13%, 33%);
+  --text-secondary: hsl(233, 13%, 49%);
+  --color-shadow: hsl(234, 14%, 74%);
+  --color-primary: linear-gradient(
+    to right,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+
+  --bg: hsl(240, 78%, 98%);
+}
+
+/* >Typography */
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: var(--text-secondary);
+  background: url(/images/bg-top.svg) no-repeat 49vw -5vh,
+    linear-gradient(var(--bg), var(--bg));
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.plan__type {
+  font-size: 1.8rem;
+}
+
+.plan__price {
+  font-size: 6rem;
+  margin: 2rem 0 1rem;
+  color: var(--text-primary);
+}
+
+.plan__price::first-letter {
+  font-size: 4rem;
+}
+
+.plan--popular .plan__price {
+  color: white;
+}
+
+/* >main */
+main {
+  margin: 6rem 0;
+}
+
+/* >toggle */
+.toggle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 1.5rem;
+  margin: 4rem 0;
+}
+
+.toggle-section > span {
+  opacity: 0.6;
+}
+
+label {
+  position: relative;
+  width: 55px;
+  height: 32px;
+  border-radius: 100px;
+  background: var(--color-primary);
+}
+
+label:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#toggle {
+  display: none;
+}
+
+label span {
+  position: absolute;
+  inset: 4px;
+  left: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 100px;
+  background-color: white;
+}
+
+input:checked + span {
+  left: 4px;
+  right: auto;
+}
+
+/* >plan */
+.plan-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin: 6rem 0;
+}
+
+.plan {
+  display: grid;
+  gap: 1rem;
+  width: 350px;
+  padding: 3rem;
+  margin: 0 2rem;
+  box-shadow: 0 0 45px -12px var(--color-shadow);
+  border-radius: 10px;
+  background: white;
+}
+
+.plan--popular {
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+}
+
+.monthly,
+.annually {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+ol {
+  font-size: 1.5rem;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid hsla(234, 13%, 49%, 0.361);
+}
+
+.plan--popular :is(ol, li) {
+  border-color: rgba(255, 255, 255, 0.361);
+}
+
+li {
+  padding: 1.8rem;
+  border-top: 1px solid hsla(234, 13%, 49%, 0.361);
+}
+
+/* >button */
+button {
+  font-size: 1.4rem;
+  letter-spacing: 0.2ch;
+  text-transform: uppercase;
+  padding: 1.4rem 0;
+  border: 1px solid;
+  border-radius: 5px;
+  color: white;
+  background: var(--color-primary);
+}
+
+button:hover {
+  cursor: pointer;
+  color: hsl(237, 63%, 64%);
+  background: white;
+}
+
+.plan--popular button {
+  color: hsl(237, 63%, 64%);
+  background: white;
+}
+
+.plan--popular button:hover {
+  color: white;
+  background: hsl(237, 63%, 64%);
+}
+
+@media (min-width: 1000px) {
+  body {
+    background: url(/images/bg-top.svg) no-repeat right top,
+      url(/images/bg-bottom.svg) no-repeat left bottom,
+      linear-gradient(var(--bg), var(--bg));
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .plan-section {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+    margin: 8rem 3rem;
+  }
+
+  .plan {
+    margin: 0;
+  }
+
+  .plan__price {
+    font-size: 7rem;
+  }
+
+  .plan--popular {
+    transform: scale(1.1);
+  }
 }
